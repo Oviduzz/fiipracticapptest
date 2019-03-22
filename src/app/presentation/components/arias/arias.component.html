@@ -1,0 +1,16 @@
+<div class="aria-warpper">
+  <app-search></app-search>
+  <div class="main-arias">
+    <div *ngFor="let aria of arias" class="single-aria-container">
+      <div class="aria-top-box"  [routerLink]="['/category', aria.category]" routerLinkActive="active" (click)="getAriaClicked(aria.category)">
+        <div class="aria-name"><span *ngFor="let ariaName of aria.name; last as isLast;"> {{ariaName}}{{isLast ? '' : ','}}</span></div>
+        <img src="{{aria.image}}" alt="">
+        <div class="aria-group">{{aria.stack}}</div>
+      </div>
+      <div class="aria-bottom-box">
+        {{aria.description}}
+      </div>
+    </div>
+  </div>
+</div>
+
