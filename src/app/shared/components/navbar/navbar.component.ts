@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AccountService} from '../../../account/services/account.service';
 
 @Component({
   selector: 'app-navbar',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-
-  constructor() { }
+  account = '';
+  constructor(private accountService: AccountService) { }
 
   ngOnInit() {
+    this.getAccount();
   }
-
+  getAccount() {
+    this.accountService.getAccount().subscribe(res => this.account = res[1]);
+  }
 }

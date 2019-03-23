@@ -13,9 +13,11 @@ import { CategoryTrainersComponent } from './presentation/components/category/ca
 import {MatAutocompleteModule, MatIconModule, MatInputModule, MatMenuModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AccountFormComponent } from './account/components/account-form/account-form.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { SearchComponent } from './shared/components/search/search.component';
 import {HttpClientModule} from '@angular/common/http';
+
+import { map, debounceTime } from 'rxjs/operators';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import {HttpClientModule} from '@angular/common/http';
     FormsModule,
     MatInputModule,
     MatAutocompleteModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

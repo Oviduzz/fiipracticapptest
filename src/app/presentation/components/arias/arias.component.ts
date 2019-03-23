@@ -8,7 +8,9 @@ import {AriasService} from '../../services/arias.service';
 })
 export class AriasComponent implements OnInit {
   @Input() ariaCategory;
+  filteredArias = [];
   private arias = [];
+
   constructor(private ariasService: AriasService) {
   }
 
@@ -17,9 +19,18 @@ export class AriasComponent implements OnInit {
   }
 
   getArias() {
+
     this.arias = this.ariasService.getArias();
+    if (this.filteredArias.length < 1) {
+      this.filteredArias = this.arias;
+    }
   }
+
   getAriaClicked(ariaCategory) {
     this.ariasService.setAriaCategory(ariaCategory);
+  }
+
+  customFunc(event) {
+      this.filteredArias = this.arias.filter(aria => aria.stack.includes(event));
   }
 }

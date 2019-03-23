@@ -1,29 +1,43 @@
 <div class="form-wrapper">
-  <form>
+  <form (ngSubmit)="onSubmit(accountForm)"  #accountForm="ngForm">
     <mat-form-field appearance="outline">
       <mat-label>Email</mat-label>
       <input matInput type="text" class="form-control" id="email"
              required
+             ngModel
              placeholder="Email"
-             name="email">
+             name="email"
+             [(ngModel)]="account.email"
+              #email="ngModel">
+      <mat-error *ngIf="!email.valid">Please insert email</mat-error>
     </mat-form-field>
+    <!--[(ngModel)]="emailInput"-->
+    <!--value is : {{ emailInput}}-->
     <mat-form-field appearance="outline">
       <mat-label>Nume</mat-label>
       <input matInput type="text" class="form-control" id="name"
              required
+             ngModel
+             [(ngModel)]="account.nume"
              placeholder="Nume"
-             name="name">
+             name="nume"
+             #nume="ngModel">
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Prenume</mat-label>
       <input matInput type="text" class="form-control" id="surname"
              required
+             ngModel
+             [(ngModel)]="account.prenume"
              placeholder="Prenume"
-             name="surname">
+             name="prenume"
+             #prenume="ngModel">
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>LinkedIn</mat-label>
-      <input matInput type="text" class="form-control" id="linkedin"
+      <input matInput type="text" class="form-control"
+             id="linkedin"
+             ngModel
              placeholder="LinkedIn"
              name="linkedin">
     </mat-form-field>
@@ -31,6 +45,7 @@
       <mat-label>Telefon</mat-label>
       <input matInput type="number" class="form-control" id="phone"
              placeholder="Telefon"
+             ngModel
              name="phone">
     </mat-form-field>
     <mat-form-field appearance="outline">
@@ -43,6 +58,7 @@
       <mat-label>Adresa</mat-label>
       <textarea matInput type="text" class="form-control" id="address"
              placeholder="Adresa"
+                ngModel
              name="address">
       </textarea>
     </mat-form-field>
@@ -50,8 +66,15 @@
       <mat-label>Despre mine</mat-label>
       <textarea matInput type="text" class="form-control" id="aboutme"
              placeholder="Despre mine"
+                ngModel
              name="aboutme">
       </textarea>
     </mat-form-field>
+    <button [disabled]="!accountForm.valid">Submit</button>
   </form>
+  <div class="test"></div>
+  <h3>My account:</h3>
+  <p>account name: {{account.name}}</p>
 </div>
+
+
